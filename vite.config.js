@@ -10,4 +10,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
+  
+},{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
 })
