@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { IoReorderThreeOutline } from "react-icons/io5";
@@ -70,13 +71,13 @@ const Header = () => {
         </div>
         <div className=" d-none d-sm-inline-flex d-lg-inline-flex align-items-center">
           <Link
-            to="/"
+            to="/login"
             className="bg-warning px-2 py-1  text-light nav-link mx-2 animate-up-2"
           >
             Log in
           </Link>
           <Link
-            to="/"
+            to="/signup"
             className=" bg-primary px-2 py-1 text-light nav-link mx-2"
           >
             Sign Up
