@@ -5,8 +5,6 @@ import Accordion from "react-bootstrap/Accordion";
 
 const PDFQRCode = () => {
   const [pdfUrl, setPdfUrl] = useState(""); 
-  const [pageTitle, setPageTitle] = useState(""); 
-  const [pageDescription, setPageDescription] = useState("");
   const [dotsColor, setDotsColor] = useState("#4267b2");
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [markerBorderColor, setMarkerBorderColor] = useState("#000000");
@@ -47,8 +45,8 @@ const PDFQRCode = () => {
   }, []);
 
   const validateFields = () => {
-    if (!pdfUrl || !pageTitle || !pageDescription) {
-      setErrorMessage("Please fill all fields.");
+    if (!pdfUrl) {
+      setErrorMessage("Please enter the PDF URL.");
       return false;
     }
     setErrorMessage("");
@@ -58,11 +56,8 @@ const PDFQRCode = () => {
   const updateQRCode = () => {
     if (!validateFields()) return;
 
-    // Combine title and description into a single string
-    const combinedData = `${pageTitle}\n\n${pageDescription}\n\n${pdfUrl}`;
-
     qrCode.current.update({
-      data: combinedData,
+      data: pdfUrl,
       dotsOptions: {
         color: dotsColor,
         type: dotsType,
@@ -83,8 +78,6 @@ const PDFQRCode = () => {
 
   useEffect(updateQRCode, [
     pdfUrl,
-    pageTitle,
-    pageDescription,
     dotsColor,
     backgroundColor,
     markerBorderColor,
@@ -100,14 +93,6 @@ const PDFQRCode = () => {
 
   const handleUrlChange = (e) => {
     setPdfUrl(e.target.value);
-  };
-
-  const handleTitleChange = (e) => {
-    setPageTitle(e.target.value);
-  };
-
-  const handleDescriptionChange = (e) => {
-    setPageDescription(e.target.value);
   };
 
   const onDownloadClick = (extension) => {
@@ -134,26 +119,6 @@ const PDFQRCode = () => {
             <small className="form-text text-muted my-2">
               Enter the URL of a PDF file from Google Drive to generate the QR code.
             </small>
-          </div>
-          <div className="my-3">
-            <h3>Page Title</h3>
-            <input
-              type="text"
-              value={pageTitle}
-              onChange={handleTitleChange}
-              className="form-control my-2"
-              placeholder="Enter page title"
-            />
-          </div>
-          <div className="my-3">
-            <h3>Page Description</h3>
-            <textarea
-              value={pageDescription}
-              onChange={handleDescriptionChange}
-              className="form-control my-2"
-              rows="3"
-              placeholder="Enter page description"
-            ></textarea>
           </div>
           {errorMessage && (
             <div className="alert alert-danger" role="alert">
@@ -256,14 +221,14 @@ const PDFQRCode = () => {
             <button
               onClick={() => onDownloadClick("png")}
               className="btn btn-warning me-2"
-              disabled={!pdfUrl || !pageTitle || !pageDescription}
+              disabled={!pdfUrl}
             >
               Download PNG
             </button>
             <button
               onClick={() => onDownloadClick("svg")}
               className="btn btn-warning"
-              disabled={!pdfUrl || !pageTitle || !pageDescription}
+              disabled={!pdfUrl}
             >
               Download SVG
             </button>
