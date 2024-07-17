@@ -53,7 +53,7 @@ const Header = () => {
 
             <li className="nav-item active mx-y ">
               <Link
-                to=""
+                to="login"
                 className="bg-warning px-2 py-1  text-light nav-link mx-2 d-sm-none text-center"
               >
                 Log in
@@ -61,7 +61,7 @@ const Header = () => {
             </li>
             <li className="nav-item active my-2">
               <Link
-                to=""
+                to="signup"
                 className="bg-primary px-2 py-1 text-light nav-link mx-2 d-sm-none text-center"
               >
                 Sign Up
