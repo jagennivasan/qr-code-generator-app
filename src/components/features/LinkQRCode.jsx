@@ -5,7 +5,7 @@ import { IoMdSettings } from "react-icons/io";
 import { FaImages } from "react-icons/fa";
 import Accordion from "react-bootstrap/Accordion";
 const LinkQRCode = () => {
-  const [url, setUrl] = useState("https://qr.io");
+  const [url, setUrl] = useState("www.google.com");
   const [logo, setLogo] = useState(null);
   const [dotsColor, setDotsColor] = useState("#4267b2");
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
